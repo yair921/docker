@@ -24,6 +24,7 @@ stages:
 
 before_script:
  - apt-get update
+ - sudo apt install docker.io
 
 containerization:
   stage: containerization # must match the stage name declared above
