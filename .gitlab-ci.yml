@@ -30,6 +30,8 @@ containerization:
   script:
     # Build the container image
     - docker build -t yairmontes/docker_app .
+    # Add Tag
+    - docker tag docker_app yairmontes/docker_app
     # Push the container image to the registry
     - docker push yairmontes/docker_app
     # Cleanup by removing the local image
