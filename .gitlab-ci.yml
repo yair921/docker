@@ -25,7 +25,6 @@ stages:
 
 before_script:
  - apt-get update
- - apt install docker-ce
 
 containerization:
   stage: containerization # must match the stage name declared above
