@@ -18,13 +18,14 @@
 #   script: npm run test:ci
 
 
+image: node:latest
 stages:
   - containerization
 #  - deploy
 
 before_script:
  - apt-get update
- - apt install docker.io
+ - apt install docker-ce
 
 containerization:
   stage: containerization # must match the stage name declared above
