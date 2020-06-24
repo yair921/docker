@@ -23,11 +23,9 @@ stages:
   - containerization
 #  - deploy
 
-before_script:
- - apt-get update
-
 containerization:
   stage: containerization # must match the stage name declared above
+  image: gitlab/dind
   script:
     # Build the container image
     - docker build -t yairmontes/docker_app .
