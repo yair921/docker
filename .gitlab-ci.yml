@@ -28,7 +28,7 @@ containerization:
   image: gitlab/dind
   script:
     # Build the container image
-    - docker build -t yairmontes/docker_app .
+    - docker build -t docker_app .
     # Add Tag
     - docker tag docker_app yairmontes/docker_app
     # Push the container image to the registry
