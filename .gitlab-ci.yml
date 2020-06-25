@@ -25,6 +25,10 @@ stages:
   - containerization
 #  - deploy
 
+cache:
+  paths:
+    - node_modules/
+
 install_dependencies:
   stage: build
   script:
