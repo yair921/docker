@@ -21,13 +21,19 @@
 image: node:latest
 stages:
   - build
+  - test
   - containerization
 #  - deploy
+
+install_dependencies:
+  stage: build
+  script:
+    - npm install
 
 testing:
   stage: build
   script: npm run test:ci
-  
+
 containerization:
   stage: containerization # must match the stage name declared above
   image: gitlab/dind
