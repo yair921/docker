@@ -31,7 +31,7 @@ install_dependencies:
     - npm install
 
 testing:
-  stage: build
+  stage: test
   script: npm run test:ci
 
 containerization:
