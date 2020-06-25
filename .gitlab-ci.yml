@@ -36,7 +36,7 @@ containerization:
     # Push the container image to the registry
     - docker push yairmontes/docker_app
     # Cleanup by removing the local image
-    - docker image rm yairmontes/docker_app
+    #- docker image rm yairmontes/docker_app
 # deployment:
 #   stage: deploy # must match the stage name declared above
 #   script:
