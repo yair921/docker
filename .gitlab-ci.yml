@@ -58,11 +58,11 @@ containerization:
   script:
     #- systemctl start docker
     # Build the container image
-    - docker build --pull -t docker .
+    - docker build --pull -t "$CI_REGISTRY_IMAGE" .
     # Add Tag
-    - docker tag docker docker_app
+    #- docker tag docker CI_REGISTRY_IMAGE
     # Push the container image to the registry
-    - docker push docker_app
+    - docker push "$CI_REGISTRY_IMAGE"
     # Cleanup by removing the local image
     #- docker image rm yairmontes/docker
   #variables to deploy -- new
@@ -71,7 +71,7 @@ deployment:
   stage: deploy # must match the stage name declared above
   image: bitnami/kubectl
   script:
-    - kubectl get deploment docker_app || kubectl create deployment docker_app --image="yairmontes/docker"
+    - kubectl get deploment "$CI_REGISTRY_IMAGE" || kubectl create deployment "$CI_REGISTRY_IMAGE" --image="yairmontes/docker"
     # create/update the kubernetes resources
     #- kubectl apply -f kubernetes_manifest.yml
     # Restart the deployment so as to pull the latest version of the container image
