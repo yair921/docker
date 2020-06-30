@@ -46,6 +46,9 @@ containerization:
   image: docker:dind
   stage: containerization # must match the stage name declared above
   #image: gitlab/dind
+  variables:
+    DOCKER_HOST: tcp://localhost:31234
+    DOCKER_TLS_CERTDIR: ""
   before_script:
     # Add docker-hub credentials 
     #- docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD
@@ -61,9 +64,6 @@ containerization:
     # Cleanup by removing the local image
     #- docker image rm yairmontes/docker_app
   #variables to deploy -- new
-  # variables:
-  #   DOCKER_HOST: tcp://localhost:31234
-  #   DOCKER_TLS_CERTDIR: ""
 
 deployment:
   stage: deploy # must match the stage name declared above
