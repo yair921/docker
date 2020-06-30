@@ -60,9 +60,9 @@ containerization:
     # Build the container image
     - docker build --pull -t docker .
     # Add Tag
-    - docker tag docker yairmontes/docker_app
+    - docker tag docker docker_app
     # Push the container image to the registry
-    - docker push yairmontes/docker_app
+    - docker push docker_app
     # Cleanup by removing the local image
     #- docker image rm yairmontes/docker
   #variables to deploy -- new
