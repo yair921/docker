@@ -43,14 +43,13 @@ testing:
   script: npm run test:ci
 
 containerization:
-  dependencies: 
-    - building
+  image: docker:latest
   stage: containerization # must match the stage name declared above
   #image: gitlab/dind
-  image: docker:latest
-  script:
+  before-script:
     # Add docker-hub credentials 
-    - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD --password-stdin
+    - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD
+  script:
     # Build the container image
     - docker build -t docker_app .
     # Add Tag
