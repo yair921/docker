@@ -43,7 +43,7 @@ testing:
   script: npm run test:ci
 
 containerization:
-  image: docker:latest
+  image: docker:dind
   stage: containerization # must match the stage name declared above
   #image: gitlab/dind
   before_script:
