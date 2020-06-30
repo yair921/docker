@@ -19,17 +19,19 @@
 
 
 image: node:latest
+# Defines the steps
 stages:
   - build
   - test
   - containerization
 #  - deploy
 
+# add to keep the packages in the process.
 cache:
   paths:
     - node_modules/
 
-install_dependencies:
+building:
   stage: build
   script:
     - npm install
@@ -49,16 +51,22 @@ containerization:
     # Add Tag
     - docker tag docker_app yairmontes/docker_app
     # Push the container image to the registry
-    - docker push yairmontes/docker_app
+    - docker push $DOCKER_HUB_USER/docker_app
     # Cleanup by removing the local image
     #- docker image rm yairmontes/docker_app
+  #variables to deploy -- new
+  variables:
+    DOCKER_HOST: tcp://localhost:31234
+    DOCKER_TLS_CERTDIR: ""
 
-# deployment:
-#   stage: deploy # must match the stage name declared above
-#   script:
-#     # create/update the kubernetes resources
-#     - kubectl apply -f kubernetes_manifest.yml
-#     # Restart the deployment so as to pull the latest version of the container image
-#     - kubectl rollout restart deployment/docker_app
-#   environment:
-#     name: production
+deployment:
+  stage: deploy # must match the stage name declared above
+  image: bitnami/kubectl
+  script:
+    - kubectl get deploment docker_app || kubectl create deployment docker_app --image="yairmontes/docker_app"
+    # create/update the kubernetes resources
+    #- kubectl apply -f kubernetes_manifest.yml
+    # Restart the deployment so as to pull the latest version of the container image
+    #- kubectl rollout restart deployment/docker_app
+  environment:
+    name: production
