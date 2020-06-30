@@ -37,6 +37,7 @@ building:
     - npm install
 
 testing:
+  dependencies: building
   stage: test
   script: npm run test:ci
 
