@@ -48,9 +48,9 @@ containerization:
   stage: containerization # must match the stage name declared above
   services:
     - docker:dind
-  variables:
-    DOCKER_HOST: https://index.docker.io/v1/
-    DOCKER_TLS_CERTDIR: ""
+  # variables:
+  #   DOCKER_HOST: tcp://localhost:2375
+  #   DOCKER_TLS_CERTDIR: ""
   before_script:
     # Add docker-hub credentials 
     #- docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD
@@ -58,7 +58,7 @@ containerization:
   script:
     #- systemctl start docker
     # Build the container image
-    - docker build --pull -t docker .
+    - docker build --pull -t yairmontes/docker .
     # Add Tag
     - docker tag docker yairmontes/docker
     # Push the container image to the registry
