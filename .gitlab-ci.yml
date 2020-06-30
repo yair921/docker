@@ -24,7 +24,7 @@ stages:
   - build
   - test
   - containerization
-#  - deploy
+  - deploy
 
 # add to keep the packages in the process.
 cache:
