@@ -59,7 +59,7 @@ containerization:
     # Add Tag
     #- docker tag $CI_REGISTRY_IMAGE" "$DOCKER_HUB_USER"/"$CI_REGISTRY_IMAGE":"$CI_COMMIT_SHA"
     # Push the container image to the registry
-    - docker push "$CI_REGISTRY_IMAGE"
+    - docker push "$DOCKER_HUB_USER"/"$CI_REGISTRY_IMAGE"
     # Cleanup by removing the local image
     #- docker image rm yairmontes/docker
   #variables to deploy -- new
