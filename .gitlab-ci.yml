@@ -60,9 +60,9 @@ containerization:
     # Cleanup by removing the local image
     #- docker image rm yairmontes/docker_app
   #variables to deploy -- new
-  variables:
-    DOCKER_HOST: tcp://localhost:31234
-    DOCKER_TLS_CERTDIR: ""
+  # variables:
+  #   DOCKER_HOST: tcp://localhost:31234
+  #   DOCKER_TLS_CERTDIR: ""
 
 deployment:
   stage: deploy # must match the stage name declared above
