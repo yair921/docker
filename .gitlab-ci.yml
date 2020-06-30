@@ -37,11 +37,14 @@ building:
     - npm install
 
 testing:
-  dependencies: building
+  dependencies: 
+    - building
   stage: test
   script: npm run test:ci
 
 containerization:
+  dependencies: 
+    - building
   stage: containerization # must match the stage name declared above
   image: gitlab/dind
   script:
