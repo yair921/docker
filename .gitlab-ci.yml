@@ -54,7 +54,7 @@ containerization:
   before_script:
     # Add docker-hub credentials 
     #- docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD
-    - echo "$DOCKER_HUB_PASSWORD" | docker login -u $DOCKER_HUB_USER --password-stdin
+    - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_USER" --password-stdin
   script:
     #- systemctl start docker
     # Build the container image
@@ -62,7 +62,7 @@ containerization:
     # Add Tag
     #- docker tag docker CI_REGISTRY_IMAGE
     # Push the container image to the registry
-    - docker push "$CI_REGISTRY_IMAGE"
+    - docker push "$DOCKER_HUB_USER"/"$CI_REGISTRY_IMAGE"
     # Cleanup by removing the local image
     #- docker image rm yairmontes/docker
   #variables to deploy -- new
