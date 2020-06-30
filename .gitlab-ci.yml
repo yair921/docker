@@ -51,7 +51,7 @@ containerization:
     # Add Tag
     - docker tag docker_app yairmontes/docker_app
     # Push the container image to the registry
-    - docker push $DOCKER_HUB_USER/docker_app
+    - docker push yairmontes/docker_app
     # Cleanup by removing the local image
     #- docker image rm yairmontes/docker_app
   #variables to deploy -- new
