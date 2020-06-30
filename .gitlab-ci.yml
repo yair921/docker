@@ -44,8 +44,10 @@ testing:
 
 containerization:
   image: docker:dind
-  stage: containerization # must match the stage name declared above
   #image: gitlab/dind
+  stage: containerization # must match the stage name declared above
+  services:
+    - docker:dind
   variables:
     DOCKER_HOST: tcp://localhost:31234
     DOCKER_TLS_CERTDIR: ""
