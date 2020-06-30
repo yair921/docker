@@ -36,11 +36,11 @@ building:
   script:
     - npm install
 
-testing:
-  dependencies: 
-    - building
-  stage: test
-  script: npm run test:ci
+# testing:
+#   dependencies: 
+#     - building
+#   stage: test
+#   script: npm run test:ci
 
 containerization:
   image: docker:latest
@@ -48,9 +48,9 @@ containerization:
   stage: containerization # must match the stage name declared above
   services:
     - docker:dind
-  variables:
-     DOCKER_HOST: tcp://localhost:2375
-     DOCKER_TLS_CERTDIR: ""
+  # variables:
+  #    DOCKER_HOST: tcp://localhost:2375
+  #    DOCKER_TLS_CERTDIR: ""
   before_script:
     # Add docker-hub credentials 
     #- docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD
