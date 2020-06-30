@@ -46,7 +46,8 @@ containerization:
   dependencies: 
     - building
   stage: containerization # must match the stage name declared above
-  image: gitlab/dind
+  #image: gitlab/dind
+  image: docker:latest
   script:
     # Add docker-hub credentials 
     - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD
