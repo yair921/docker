@@ -73,11 +73,12 @@ containerization:
 
 deployment:
   stage: deploy # must match the stage name declared above
+  image: bitnami/kubectl:1.14
   script:
     # create/update the kubernetes resources
     - kubectl apply -f kubernetes_manifest.yml
     # Restart the deployment so as to pull the latest version of the container image
-    - kubectl rollout restart deployment/my-application
+    - kubectl rollout restart deployment/docker_app
   environment:
     name: production
 
