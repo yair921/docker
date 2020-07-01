@@ -55,13 +55,14 @@ containerization:
   script:
     #- systemctl start docker
     # Build the container image
-    #- docker build --pull -t "$CI_REGISTRY_IMAGE":"$CI_COMMIT_SHA" .
-    - docker build --pull -t docker_app .
+    - docker build --pull -t "$CI_REGISTRY_IMAGE":"$CI_COMMIT_SHA" .
+    #- docker build --pull -t docker_app .
     # Add Tag
-    #- docker tag $CI_REGISTRY_IMAGE" "$DOCKER_HUB_USER"/"$CI_REGISTRY_IMAGE":"$CI_COMMIT_SHA"
-    - docker tag docker_app yairmontes/docker_app
+    - docker tag "$CI_REGISTRY_IMAGE" "$DOCKER_HUB_USER"/"$CI_REGISTRY_IMAGE":"$CI_COMMIT_SHA"
+    #- docker tag docker_app yairmontes/docker_app
     # Push the container image to the registry
-    - docker push yairmontes/docker_app
+    #- docker push yairmontes/docker_app
+    - docker push "$DOCKER_HUB_USER"/"$CI_REGISTRY_IMAGE"
     # Cleanup by removing the local image
     #- docker image rm yairmontes/"$CI_REGISTRY_IMAGE"
   #variables to deploy -- new
