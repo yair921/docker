@@ -2,7 +2,9 @@
 FROM node:12
 
 # Create app directory
-WORKDIR /app
+# WORKDIR /app
+# Create app directory
+WORKDIR /usr/src/app
 
 # Copy all files into the container
 COPY package*.json ./
