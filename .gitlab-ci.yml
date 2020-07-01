@@ -73,7 +73,9 @@ containerization:
 
 deployment:
   stage: deploy # must match the stage name declared above
-  image: bitnami/kubectl:1.14
+  image: 
+    name: bitnami/kubectl:1.14
+    entrypoint: [""]
   script:
     # create/update the kubernetes resources
     - kubectl apply -f kubernetes_manifest.yml
