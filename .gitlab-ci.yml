@@ -80,7 +80,7 @@ deployment:
     # create/update the kubernetes resources
     - kubectl apply -f kubernetes_manifest.yml
     # Restart the deployment so as to pull the latest version of the container image
-    - kubectl rollout restart deployment/docker_app
+    - kubectl rollout restart yairmontes/docker_app
   environment:
     name: production
 
