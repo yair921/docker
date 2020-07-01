@@ -2,19 +2,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: docker_app
+  name: docker-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: docker_app
+      app: docker-app
   template:
     metadata:
       labels:
-        app: docker_app
+        app: docker-app
     spec:
       containers:
-      - name: docker_app
+      - name: docker-app
         image: yairmontes/docker_app:latest
         imagePullPolicy: Always
         ports:
@@ -25,11 +25,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: docker_app
+  name: docker-app
 spec:
   ports:
   - port: 8080
     nodePort: 31234
   selector:
-    app: docker_app
+    app: docker-app
   type: NodePort
