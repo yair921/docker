@@ -87,7 +87,9 @@ containerization:
 
 deployment:
   stage: deploy # must match the stage name declared above
-  image: bitnami/kubectl:1.14
+  image: 
+    name: bitnami/kubectl:1.14
+    entrypoint: [""]
   script:
     - kubectl get deploment hola-node || kubectl create deployment hola-node --image="$DOCKER_HUB_USER"/"$CI_REGISTRY_IMAGE":"$CI_COMMIT_SHA"
     - kubectl set image deployment/hola-node hola-node="$DOCKER_HUB_USER"/"$CI_REGISTRY_IMAGE":"$CI_COMMIT_SHA"
