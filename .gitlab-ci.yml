@@ -78,7 +78,7 @@ deployment:
     entrypoint: [""]
   script:
     - kubectl get deployment docker-app || kubectl create deployment docker-app --image="$DOCKER_HUB_USER"/"$CI_REGISTRY_IMAGE":"$CI_COMMIT_SHA"
-    - kubectl set image yairmontes/docker-app docker-app="$DOCKER_HUB_USER"/"$CI_REGISTRY_IMAGE":"$CI_COMMIT_SHA"
+    - kubectl set image docker-app docker-app="$DOCKER_HUB_USER"/"$CI_REGISTRY_IMAGE":"$CI_COMMIT_SHA"
     # create/update the kubernetes resources
     - kubectl apply -f kubernetes_manifest.yml
     # Restart the deployment so as to pull the latest version of the container image
