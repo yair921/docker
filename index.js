@@ -40,7 +40,7 @@ app.get('*', (req, res) => res.status(200).send({
 
 app.listen(port, (err) => {
     if (!err) {
-        console.log(`App started on port ${port}...`);
+        console.log(`Server running on port ${port}...`);
     } else {
         console.log(err);
     }

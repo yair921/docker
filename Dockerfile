@@ -1,5 +1,5 @@
 # The image is built on top of one that has node preinstalled
-FROM node:12
+FROM node:latest
 
 # Create app directory
 # WORKDIR /app
@@ -12,10 +12,10 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
+COPY . .
+
 # Open appropriate port 
 EXPOSE 8080
-
-COPY . .
 
 # Start the application
 CMD ["npm", "start"]
