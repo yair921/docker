@@ -56,12 +56,12 @@ containerization:
     #- systemctl start docker
     # Build the container image
     - docker build --pull -t "$CI_REGISTRY_IMAGE" .
-    #- docker build --pull -t docker_app .
+    #- docker build --pull -t docker-app .
     # Add Tag
     - docker tag "$CI_REGISTRY_IMAGE" "$DOCKER_HUB_USER"/"$CI_REGISTRY_IMAGE":"$CI_COMMIT_SHA"
-    #- docker tag docker_app yairmontes/docker_app
+    #- docker tag docker-app yairmontes/docker-app
     # Push the container image to the registry
-    #- docker push yairmontes/docker_app
+    #- docker push yairmontes/docker-app
     - docker push "$DOCKER_HUB_USER"/"$CI_REGISTRY_IMAGE":"$CI_COMMIT_SHA"
     # Cleanup by removing the local image
     #- docker image rm yairmontes/"$CI_REGISTRY_IMAGE"
@@ -80,7 +80,7 @@ containerization:
 #     # create/update the kubernetes resources
 #     - kubectl apply -f kubernetes_manifest.yml
 #     # Restart the deployment so as to pull the latest version of the container image
-#     #- kubectl rollout restart yairmontes/docker_app
+#     #- kubectl rollout restart yairmontes/docker-app
 #   environment:
 #     name: production
 
@@ -91,12 +91,12 @@ deployment:
     name: bitnami/kubectl:1.14
     entrypoint: [""]
   script:
-    - kubectl get deployment hola-node || kubectl create deployment hola-node --image="$DOCKER_HUB_USER"/"$CI_REGISTRY_IMAGE":"$CI_COMMIT_SHA"
-    - kubectl set image yairmontes/hola-node hola-node="$DOCKER_HUB_USER"/"$CI_REGISTRY_IMAGE":"$CI_COMMIT_SHA"
+    - kubectl get deployment docker-app || kubectl create deployment hola-node --image="$DOCKER_HUB_USER"/"$CI_REGISTRY_IMAGE":"$CI_COMMIT_SHA"
+    - kubectl set image yairmontes/docker-app docker-app="$DOCKER_HUB_USER"/"$CI_REGISTRY_IMAGE":"$CI_COMMIT_SHA"
     # create/update the kubernetes resources
     #- kubectl apply -f kubernetes_manifest.yml
     # Restart the deployment so as to pull the latest version of the container image
-    #- kubectl rollout restart deployment/docker_app
+    #- kubectl rollout restart deployment/docker-app
   only: 
     - master
   environment:

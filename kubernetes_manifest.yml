@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: docker-app
-        image: yairmontes/docker_app:latest
+        image: yairmontes/docker-app:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
