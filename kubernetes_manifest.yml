@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: docker-app
-  namespace: default
+  #namespace: default
 spec:
   replicas: 1
   selector:
@@ -30,7 +30,7 @@ kind: Service
 metadata:
   #name: docker-app
   name: docker-app-entrypoint
-  namespace: default
+  #namespace: default
 # spec:
 #   ports:
 #   - port: 8080
