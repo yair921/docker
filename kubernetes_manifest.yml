@@ -3,15 +3,18 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: docker-app
+  namespace: default
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: docker-app
+      #app: docker-app
+      bb: web
   template:
     metadata:
       labels:
-        app: docker-app
+        #app: docker-app
+        bb: web
     spec:
       containers:
       - name: docker-app
@@ -25,7 +28,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: docker-app
+  #name: docker-app
+  name: docker-app-entrypoint
+  namespace: default
 # spec:
 #   ports:
 #   - port: 8080
@@ -35,10 +40,12 @@ metadata:
 #   type: NodePort
 spec:
   type: LoadBalancer
-  ports:
-    - port: 80
-      targetPort: 80
-      #protocol: TCP
-      name: http
   selector:
-      app: docker-app
+      #app: docker-app
+      bb: web
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30001
+      #protocol: TCP
+      #name: http
