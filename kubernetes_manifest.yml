@@ -26,10 +26,19 @@ apiVersion: v1
 kind: Service
 metadata:
   name: docker-app
+# spec:
+#   ports:
+#   - port: 8080
+#     nodePort: 31234
+#   selector:
+#     app: docker-app
+#   type: NodePort
 spec:
+  type: LoadBalancer
   ports:
-  - port: 8080
-    nodePort: 31234
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: http
   selector:
-    app: docker-app
-  type: NodePort
+      app: docker-app
