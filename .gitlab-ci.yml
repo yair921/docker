@@ -71,31 +71,31 @@ containerization:
       DOCKER_TLS_CERTDIR: ""
 
 
-deployment:
-  stage: deploy # must match the stage name declared above
-  image: 
-    name: bitnami/kubectl:1.14
-    entrypoint: [""]
-  script:
-    # create/update the kubernetes resources
-    - kubectl apply -f kubernetes_manifest.yml
-    # Restart the deployment so as to pull the latest version of the container image
-    #- kubectl rollout restart yairmontes/docker_app
-  environment:
-    name: production
-
-
 # deployment:
 #   stage: deploy # must match the stage name declared above
-#   image: bitnami/kubectl:1.14
+#   image: 
+#     name: bitnami/kubectl:1.14
+#     entrypoint: [""]
 #   script:
-#     - kubectl get deploment hola-node || kubectl create deployment hola-node --image="$DOCKER_HUB_USER"/"$CI_REGISTRY_IMAGE":"$CI_COMMIT_SHA"
-#     - kubectl set image deployment/hola-node hola-node="$DOCKER_HUB_USER"/"$CI_REGISTRY_IMAGE":"$CI_COMMIT_SHA"
 #     # create/update the kubernetes resources
-#     #- kubectl apply -f kubernetes_manifest.yml
+#     - kubectl apply -f kubernetes_manifest.yml
 #     # Restart the deployment so as to pull the latest version of the container image
-#     #- kubectl rollout restart deployment/docker_app
-#   only: 
-#     - master
+#     #- kubectl rollout restart yairmontes/docker_app
 #   environment:
 #     name: production
+
+
+deployment:
+  stage: deploy # must match the stage name declared above
+  image: bitnami/kubectl:1.14
+  script:
+    - kubectl get deploment hola-node || kubectl create deployment hola-node --image="$DOCKER_HUB_USER"/"$CI_REGISTRY_IMAGE":"$CI_COMMIT_SHA"
+    - kubectl set image deployment/hola-node hola-node="$DOCKER_HUB_USER"/"$CI_REGISTRY_IMAGE":"$CI_COMMIT_SHA"
+    # create/update the kubernetes resources
+    #- kubectl apply -f kubernetes_manifest.yml
+    # Restart the deployment so as to pull the latest version of the container image
+    #- kubectl rollout restart deployment/docker_app
+  only: 
+    - master
+  environment:
+    name: production
