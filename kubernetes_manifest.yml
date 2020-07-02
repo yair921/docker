@@ -8,13 +8,13 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      #app: docker-app
-      bb: web
+      app: docker-app
+      #bb: web
   template:
     metadata:
       labels:
-        #app: docker-app
-        bb: web
+        app: docker-app
+        #bb: web
     spec:
       containers:
       - name: docker-app
