@@ -22,19 +22,19 @@ spec:
         imagePullPolicy: Always
         command: [ "echo", "IMAGE UPDATED!" ]
         ports:
-        - containerPort: 8080
+        - containerPort: 80
 ---
 # This section will create a service in the Kubernetes cluster
 # so that the deployment can be accessed from the outside
 apiVersion: v1
 kind: Service
 metadata:
-  #name: docker-app
-  name: docker-app-entrypoint
+  name: docker-app
+  #name: docker-app-entrypoint
   #namespace: default
 # spec:
 #   ports:
-#   - port: 8080
+#   - port: 80
 #     nodePort: 31234
 #   selector:
 #     app: docker-app
@@ -42,11 +42,11 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
-      #app: docker-app
-      bb: web
+      app: docker-app
+      #bb: web
   ports:
-    - port: 8080
-      targetPort: 8080
-      nodePort: 30001
+    - port: 80
+      targetPort: 80
+      nodePort: 3000
       #protocol: TCP
       #name: http
