@@ -13,7 +13,7 @@ const addNumbers = (firstNumber, secondNumber) => {
 
 // Destructure our bodyParser methods
 const { urlencoded, json } = bodyParser;
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 3000;
 // intialize our express app
 
 // Parse incoming requests data (https://github.com/expressjs/body-parser)

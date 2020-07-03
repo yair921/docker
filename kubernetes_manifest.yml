@@ -22,7 +22,7 @@ spec:
         imagePullPolicy: Always
         command: [ "echo", "IMAGE UPDATED!" ]
         ports:
-        - containerPort: 80
+        - containerPort: 3000
 ---
 # This section will create a service in the Kubernetes cluster
 # so that the deployment can be accessed from the outside
@@ -45,8 +45,8 @@ spec:
       app: docker-app
       #bb: web
   ports:
-    - port: 80
-      targetPort: 80
+    - port: 3000
+      targetPort: 3000
       nodePort: 30002
       #protocol: TCP
       #name: http
