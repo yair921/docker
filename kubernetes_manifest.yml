@@ -20,6 +20,7 @@ spec:
       - name: docker-app
         image: yairmontes/docker-app:latest
         imagePullPolicy: Always
+        command: [ "echo", "IMAGE UPDATED!" ]
         ports:
         - containerPort: 8080
 ---
